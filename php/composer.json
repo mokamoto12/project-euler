@@ -1,0 +1,23 @@
+{
+    "name": "mokamoto12/project-euler-php",
+    "description": "Project Euler Solution,",
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "authors": [
+        {
+            "name": "mokamoto12",
+            "email": "mokamoto1208@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Solutions\\": "solutions"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    }
+}
