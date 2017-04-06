@@ -15,6 +15,9 @@ class CalcurateUtils
     public static function divisibleByOneItem(int $dividend, array $divisors)
     {
         foreach ($divisors as $divisor) {
+            if (empty($divisor)) {
+                continue;
+            }
             if ($dividend % $divisor === 0) {
                 return true;
             }
