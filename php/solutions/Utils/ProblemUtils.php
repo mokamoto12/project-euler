@@ -31,10 +31,19 @@ class ProblemUtils
      */
     public static function createProblem(string $problemNum)
     {
-        $class = 'Solutions\\' . $problemNum;
+        $class = 'Solutions\\' . static::modifyProblemNumber($problemNum);
         if (!class_exists($class)) {
             throw new ProblemNotFoundException($problemNum);
         }
         return new $class();
+    }
+
+    public static function modifyProblemNumber(string $problemNum)
+    {
+        if (strpos($problemNum, 'P') === 0 || strpos($problemNum, 'p') === 0) {
+            return 'P' . sprintf('%03d', substr($problemNum, 1));
+        } else {
+            return 'P' . sprintf('%03d', $problemNum);
+        }
     }
 }
