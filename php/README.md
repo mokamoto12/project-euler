@@ -2,12 +2,18 @@
 
 ## Answer Question
 
-You add Problem class in solutions directory.
+Run question.php script.
 
-Problem class should implements SolutionInterface.
+Generate Problem class in solutions directory.
+
+```
+$ php bin/question.php 1  # Created resolve/P001.php file
+```
+
+Implement resolve method.
 
 ## Solve Question
 
 ```
-$ php index.php P001 // P001 is Problem class name
+$ php bin/resolve.php 1  # run P001::resolve() and echo execution time
 ```
