@@ -38,6 +38,14 @@ class ProblemUtils
         return new $class();
     }
 
+    /**
+     * Modify Problem Number.
+     * e.g. 1 -> P001, p1 -> P001
+     *
+     * @param string $problemNum Problem number
+     *
+     * @return string
+     */
     public static function modifyProblemNumber(string $problemNum)
     {
         if (strpos($problemNum, 'P') === 0 || strpos($problemNum, 'p') === 0) {
