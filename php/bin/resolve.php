@@ -6,7 +6,7 @@ array_shift($argv);
 foreach ($argv as $problemNum) {
     try {
         \Solutions\Utils\ProblemUtils::echoAnswer(\Solutions\Utils\ProblemUtils::createProblem($problemNum));
-    } catch (\Solutions\Exceptions\ProblemNotFoundException $e) {
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
 }
