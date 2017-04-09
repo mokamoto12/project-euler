@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 array_shift($argv);
 foreach ($argv as $problemNum) {
