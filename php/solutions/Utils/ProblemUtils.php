@@ -2,6 +2,7 @@
 
 namespace Solutions\Utils;
 
+use Solutions\Exceptions\QuestionAlreadyExistException;
 use Solutions\Interfaces\SolutionInterface;
 use Solutions\Exceptions\ProblemNotFoundException;
 
@@ -53,5 +54,58 @@ class ProblemUtils
         } else {
             return 'P' . sprintf('%03d', $problemNum);
         }
+    }
+
+    /**
+     * Generate Question File.
+     *
+     * @param string $problemNum Problem Number
+     *
+     * @return void
+     * @throws QuestionAlreadyExistException
+     */
+    public static function generateQuestion(string $problemNum)
+    {
+        $problemNumber = static::modifyProblemNumber($problemNum);
+        $targetFile = __DIR__ . "/../$problemNumber.php";
+        if (file_exists($targetFile)) {
+            throw new QuestionAlreadyExistException($targetFile);
+        }
+        $question = static::formatQuestion(static::fetchQuestion($problemNumber));
+        $template = file_get_contents(__DIR__ . '/../templates/ProblemTemplate.txt');
+        file_put_contents($targetFile, str_replace(
+            '{{ProblemNumber}}',
+            $problemNumber,
+            str_replace('{{Question}}', $question, $template)
+        ));
+    }
+
+    /**
+     * Fetch Question.
+     *
+     * @param string $problemNum Modified Problem Number
+     *
+     * @return string
+     */
+    public static function fetchQuestion(string $problemNum): string
+    {
+        $dom = new \DOMDocument();
+        $dom->loadHTMLFile('https://projecteuler.net/problem=' . substr($problemNum, 1));
+        $xpath = new \DOMXPath($dom);
+        return trim($xpath->query('//div[@class="problem_content"]')[0]->nodeValue);
+    }
+
+    /**
+     * Format Question.
+     *
+     * @param string $question Question String
+     *
+     * @return string
+     */
+    public static function formatQuestion(string $question): string
+    {
+        return implode("\n", array_map(function ($line) {
+            return " * $line";
+        }, explode("\n", $question)));
     }
 }

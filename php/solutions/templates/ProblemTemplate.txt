@@ -1,0 +1,23 @@
+<?php
+
+namespace Solutions;
+
+use Solutions\Utils\CalcurateUtils;
+use Solutions\Interfaces\SolutionInterface;
+
+/**
+{{Question}}
+ */
+class {{ProblemNumber}} implements SolutionInterface
+{
+
+    /**
+     * Resolve problem
+     *
+     * @return mixed
+     */
+    public static function resolve()
+    {
+        return;
+    }
+}
