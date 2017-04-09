@@ -55,4 +55,36 @@ class UtilsTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertTrue(CalcurateUtils::divisibleByOneItem(10, [0, 2]));
     }
+
+    /**
+     * @test
+     */
+    function fibonacci_3()
+    {
+        $this->assertEquals(3, CalcurateUtils::fibonacci(3));
+    }
+
+    /**
+     * @test
+     */
+    function fibonacci_10()
+    {
+        $this->assertEquals(89, CalcurateUtils::fibonacci(10));
+    }
+
+    /**
+     * @test
+     */
+    function fibonacciSequence_10()
+    {
+        $this->assertEquals([1, 2, 3, 5, 8], CalcurateUtils::fibonacciSequence(10));
+    }
+
+    /**
+     * @test
+     */
+    function fibonacciSequence_100()
+    {
+        $this->assertEquals([1, 2, 3, 5, 8, 13, 21, 34, 55, 89], CalcurateUtils::fibonacciSequence(100));
+    }
 }
